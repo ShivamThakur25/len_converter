@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Unit Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background-color: #e8eeab;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #555;
+    }
+    
+    input[type="number"] {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: #51ac54;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Unit Converter</h1>
+    <label for="value">Value:</label>
+    <input type="number" id="value" placeholder="Enter a value">
+    
+    <label for="fromUnit">From:</label>
+    <select id="fromUnit">
+      <option value="cm">Centimeters (cm)</option>
+      <option value="inch">Inches (inch)</option>
+      <option value="m">Meters (m)</option>
+      <option value="km">Kilometers (km)</option>
+      <option value="Yard">Yard (Yard)</option>
+    </select>
+    
+    <label for="toUnit">To:</label>
+    <select id="toUnit">
+      <option value="cm">Centimeters (cm)</option>
+      <option value="inch">Inches (inch)</option>
+      <option value="m">Meters (m)</option>
+      <option value="km">Kilometers (km)</option>
+      <option value="Yard">Yard (Yard)</option>
+    </select>
+    
+    <button onclick="convert()">Convert</button>
+    
+    <div class="result" id="result"></div>
+  </div>
+  
+  <script>
+    function convert() {
+      var value = document.getElementById('value').value;
+      var fromUnit = document.getElementById('fromUnit').value;
+      var toUnit = document.getElementById('toUnit').value;
+      var resultElement = document.getElementById('result');
+      
+      var convertedValue;
+      
+      if (fromUnit === 'cm' && toUnit === 'inch') {
+        convertedValue = value / 2.54; // Convert centimeters to inches
+        resultElement.innerHTML = value + ' cm = ' + convertedValue + ' inches';
+      } else if (fromUnit === 'inch' && toUnit === 'cm') {
+        convertedValue = value * 2.54; // Convert inches to centimeters
+        resultElement.innerHTML = value + ' inches = ' + convertedValue + ' cm';
+      } else if (fromUnit === 'm' && toUnit === 'cm') {
+        convertedValue = value * 100; // Convert meters to centimeters
+        resultElement.innerHTML = value + ' m = ' + convertedValue + ' cm';
+      } else if (fromUnit === 'cm' && toUnit === 'm') {
+        convertedValue = value / 100; // Convert centimeters to meters
+        resultElement.innerHTML = value + ' cm = ' + convertedValue + ' m';
+      } else if (fromUnit === 'km' && toUnit === 'cm') {
+        convertedValue = value * 100000; // Convert kilometers to centimeters
+        resultElement.innerHTML = value + ' km = ' + convertedValue + ' cm';
+      } else if (fromUnit === 'cm' && toUnit === 'km') {
+        convertedValue = value / 100000; // Convert centimeters to kilometers
+        resultElement.innerHTML = value + ' cm = ' + convertedValue + ' km';
+      } else if (fromUnit === 'm' && toUnit === 'km') {
+        convertedValue = value / 1000; // Convert meters to kilometers
+        resultElement.innerHTML = value + 'm = ' + convertedValue + 'km';
+      } else if (fromUnit === 'km' && toUnit === 'm') {
+        convertedValue = value * 1000; // Convert kilometers to meters
+        resultElement.innerHTML = value + 'km = ' + convertedValue + 'm';
+      } else if (fromUnit === 'm' && toUnit === 'inch') {
+        convertedValue = value * 39.37; // Convert meters to inches
+        resultElement.innerHTML = value + 'm = ' + convertedValue + 'inch';
+      } else if (fromUnit === 'inch' && toUnit === 'm') {
+        convertedValue = value / 39.37; // Convert inches to meters
+        resultElement.innerHTML = value + 'm = ' + convertedValue + 'inch';
+      } else if (fromUnit === 'km' && toUnit === 'm') {
+        convertedValue = value * 39370; // Convert kilometers to inch
+        resultElement.innerHTML = value + 'km = ' + convertedValue + 'inch';
+      } else if (fromUnit === 'inch' && toUnit === 'km') {
+        convertedValue = value / 39370; // Convert inch to kilometers
+        resultElement.innerHTML = value + 'inch = ' + convertedValue + 'km';
+      } else if (fromUnit === 'Yard' && toUnit === 'cm') {
+        convertedValue = value *91.44; // Convert Yard to centimeter
+        resultElement.innerHTML = value + 'Yard = ' + convertedValue + 'cm';
+      } else if (fromUnit === 'cm' && toUnit === 'Yard') {
+        convertedValue = value / 91.44; // Convert centimeter to Yard
+        resultElement.innerHTML = value + 'cm = ' + convertedValue + 'Yard';
+      } else if (fromUnit === 'Yard' && toUnit === 'm') {
+        convertedValue = value / 1.094; // Convert Yard to meter
+        resultElement.innerHTML = value + 'Yard = ' + convertedValue + 'm';
+      } else if (fromUnit === 'm' && toUnit === 'Yard') {
+        convertedValue = value *1.0936; // Convert meter to Yard
+        resultElement.innerHTML = value + 'm = ' + convertedValue + 'Yard';
+      } else if (fromUnit === 'km' && toUnit === 'Yard') {
+        convertedValue = value *1093.61; // Convert kilometer to yard
+        resultElement.innerHTML = value + 'km = ' + convertedValue + 'Yard';
+      } else if (fromUnit === 'Yard' && toUnit === 'km') {
+        convertedValue = value / 1.0936; // Convert yard to kilometer
+        resultElement.innerHTML = value + 'Yard = ' + convertedValue + 'km';
+      } else if (fromUnit === 'Yard' && toUnit === 'inch') {
+        convertedValue = value * 36; // Convert yard to inches
+        resultElement.innerHTML = value + 'Yard = ' + convertedValue + 'inch';
+      } else if (fromUnit === 'inch' && toUnit === 'Yard') {
+        convertedValue = value / 36; // Convert inches to yard
+        resultElement.innerHTML = value + 'inch = ' + convertedValue + 'Yard';
+      } else if (fromUnit === toUnit) {
+        resultElement.innerHTML = 'Same units selected. No conversion needed.';
+      } else {
+        resultElement.innerHTML = 'Unsupported conversion.';
+      }
+    }
+  </script>
+</body>
+</html>
